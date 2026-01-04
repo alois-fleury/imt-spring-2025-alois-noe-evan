@@ -21,6 +21,8 @@ public class SecurityConfiguration {
             authorize
                 .requestMatchers(HttpMethod.GET, "/api/**").hasAnyRole("USER", "ADMIN")
                 .requestMatchers("/api/**").hasRole("ADMIN")
+                .requestMatchers("/actuator/health/**").permitAll()
+                .requestMatchers("/actuator/**").hasRole("ADMIN")
                 .anyRequest().permitAll())
         .httpBasic(Customizer.withDefaults());
 

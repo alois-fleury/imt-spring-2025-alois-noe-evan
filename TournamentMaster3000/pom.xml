@@ -14,20 +14,6 @@
         <version>4.0.0</version>
     </parent>
 
-    <!-- TODO-01 Ajouter la dépendance à Spring Boot Actuator -->
-    <!-- TODO-02 Aller sur http://localhost:8080/actuator/health et vérifier qu'on a bien UP -->
-    <!-- TODO-03 Activer les détails du endpoint /health, relancer l'application et rafraîchir le navigateur. Prendre connaissance de ce qui s'affiche en plus -->
-    <!-- TODO-04 Couper la base de données et rafraîchir le navigateur. Une fois chargée, que voyez-vous ? -->
-    <!-- TODO-05 Relancer la base de données et rafraîchir, le status repasse à UP directement -->
-    <!-- TODO-06 Exposer tous les endpoints et aller sur http://localhost:8080/actuator pour voir la liste exposée -->
-    <!-- TODO-07 Aller sur /actuator/metrics pour consulter la liste des métriques disponibles -->
-    <!-- TODO-08 Aller voir la liste des métriques http http://localhost:8080/actuator/metrics/http.server.requests -->
-    <!-- TODO-08 Regarder la liste des tags, et s'en servir pour personnaliser la recherche de métriques -->
-    <!-- TODO-09 Créer un HealthIndicator personnalisé : si la base de données ne contient aucun match, afficher "DOWN" avec un message d'erreur en détail, sinon afficher "UP" avec le nombre de matchs en détail -->
-    <!-- TODO-10a Vérifier sur /actuator/health que votre HealthIndicator est bien présent -->
-    <!-- TODO-10b Vider la table match (via un "TRUNCATE TABLE `match`;" par exemple) sans couper la base de données, rafraîchir et vérifier que ça passe bien à DOWN -->
-    <!-- TODO-11 BONUS Sécuriser tous les endpoints actuator sauf le /health avec le rôle ADMIN -->
-
     <dependencies>
 
         <dependency>
@@ -49,6 +35,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
         <dependency>
