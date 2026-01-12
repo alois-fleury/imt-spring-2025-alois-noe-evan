@@ -1,5 +1,6 @@
 package org.imt.tournamentmaster.controller.match;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.imt.tournamentmaster.model.match.Match;
 import org.imt.tournamentmaster.service.match.MatchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@SecurityRequirement(name = "basicAuth")
 @RequestMapping("/api/match")
 public class MatchController {
 

@@ -1,5 +1,6 @@
 package org.imt.tournamentmaster.controller.equipe;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.imt.tournamentmaster.model.equipe.Equipe;
 import org.imt.tournamentmaster.service.equipe.EquipeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@SecurityRequirement(name = "basicAuth")
 @RequestMapping("/api/equipe")
 public class EquipeController {
 
