@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.StreamSupport;
 
@@ -39,6 +41,9 @@ public class MatchRepositoryTest {
         Assertions.assertEquals(Match.Status.TERMINE, match.getStatus());
 
         Assertions.assertEquals(match.getEquipeA(), match.determineWinner());
+
+        final Date expectedDate = Timestamp.valueOf("2024-01-10 14:30:00");
+        Assertions.assertEquals(expectedDate, match.getDate());
     }
 
     @Test

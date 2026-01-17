@@ -48,6 +48,7 @@ CREATE TABLE `match`
     equipea_id BIGINT   NULL,
     equipeb_id BIGINT   NULL,
     status     SMALLINT NULL,
+    `date`     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT pk_match PRIMARY KEY (id)
 );
 
