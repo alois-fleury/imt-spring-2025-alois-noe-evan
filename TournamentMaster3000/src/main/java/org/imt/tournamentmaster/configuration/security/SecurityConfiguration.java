@@ -32,7 +32,8 @@ public class SecurityConfiguration {
                                 .requestMatchers("/actuator/health/**").permitAll()
                                 .requestMatchers("/actuator/**").hasRole("ADMIN")
                                 .anyRequest().permitAll())
-                .httpBasic(Customizer.withDefaults());
+                .httpBasic(Customizer.withDefaults())
+                .formLogin(Customizer.withDefaults());
 
         return http.build();
     }
