@@ -12,7 +12,6 @@ import java.util.Base64;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) // on demande un port random disponible sur la machine
 @AutoConfigureRestTestClient
-@Disabled("À activer au cours du TP")
 public class CompteControllerTest {
 
     @LocalServerPort
@@ -34,6 +33,7 @@ public class CompteControllerTest {
     public void testWhoAmI_authenticatedAsUser_ok() {
         restTestClient.get()
                 .uri("http://localhost:%d/compte/whoami".formatted(port))
+                .header("Authorization", getBasicAuthHeader("user", "user"))
                 .exchangeSuccessfully()
                 .expectBody(String.class)
                 .isEqualTo("user");
@@ -43,6 +43,7 @@ public class CompteControllerTest {
     public void testWhoAmI_authenticatedAsAdmin_ok() {
         restTestClient.get()
                 .uri("http://localhost:%d/compte/whoami".formatted(port))
+                .header("Authorization", getBasicAuthHeader("admin", "admin"))
                 .exchangeSuccessfully()
                 .expectBody(String.class)
                 .isEqualTo("admin");
@@ -61,6 +62,7 @@ public class CompteControllerTest {
     public void testSecret_authenticatedAsUser_ko() {
         restTestClient.get()
                 .uri("http://localhost:%d/compte/secret".formatted(port))
+                .header("Authorization", getBasicAuthHeader("user", "user"))
                 .exchange()
                 .expectStatus()
                 .is4xxClientError();
@@ -70,6 +72,7 @@ public class CompteControllerTest {
     public void testSecret_authenticatedAsAdmin_ok() {
         restTestClient.get()
                 .uri("http://localhost:%d/compte/secret".formatted(port))
+                .header("Authorization", getBasicAuthHeader("admin", "admin"))
                 .exchangeSuccessfully()
                 .expectBody(String.class)
                 .isEqualTo("This is a secret admin page!");
