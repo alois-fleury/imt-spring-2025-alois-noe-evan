@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.imt.tournamentmaster.model.equipe.Equipe;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,15 +33,18 @@ public class Match {
 
     private Status status;
 
+    private Date date;
+
     public Match() {
     }
 
-    public Match(long id, Equipe equipeA, Equipe equipeB, List<Round> rounds, Status status) {
+    public Match(long id, Equipe equipeA, Equipe equipeB, List<Round> rounds, Status status, Date date) {
         this.id = id;
         this.equipeA = equipeA;
         this.equipeB = equipeB;
         this.rounds = rounds;
         this.status = status;
+        this.date = date;
     }
 
     public long getId() {
@@ -83,6 +87,14 @@ public class Match {
         this.status = status;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public Equipe determineWinner() {
         int wonByA = 0;
         int wonByB = 0;
@@ -110,6 +122,7 @@ public class Match {
                 ", equipeB=" + equipeB +
                 ", rounds=" + rounds +
                 ", status=" + status +
+                ", date=" + date +
                 '}';
     }
 
@@ -118,12 +131,12 @@ public class Match {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Match match = (Match) o;
-        return id == match.id && Objects.equals(equipeA, match.equipeA) && Objects.equals(equipeB, match.equipeB) && Objects.equals(rounds, match.rounds) && status == match.status;
+        return id == match.id && Objects.equals(equipeA, match.equipeA) && Objects.equals(equipeB, match.equipeB) && Objects.equals(rounds, match.rounds) && status == match.status && Objects.equals(date, match.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, equipeA, equipeB, rounds, status);
+        return Objects.hash(id, equipeA, equipeB, rounds, status, date);
     }
 
     public enum Status {

@@ -6,6 +6,7 @@ import org.imt.tournamentmaster.model.match.Match;
 import org.imt.tournamentmaster.model.match.Round;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public abstract class TestUtils {
@@ -35,6 +36,6 @@ public abstract class TestUtils {
         rounds.add(round3);
 
         // create a match
-        return new Match(1L, equipe1, equipe2, rounds, Match.Status.TERMINE);
+        return new Match(1L, equipe1, equipe2, rounds, Match.Status.TERMINE, new Date());
     }
 }
