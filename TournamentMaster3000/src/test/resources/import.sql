@@ -1,3 +1,9 @@
+INSERT INTO users (username, password, enabled) VALUES ('user', '{bcrypt}$2a$10$1SJdbP9DR1k2lhClxM/wye92ova6/bvWO6z3tQDC6og3.eCZE2PwK', 1);
+INSERT INTO users (username, password, enabled) VALUES ('admin', '{bcrypt}$2a$10$oxQtvu/geZAPUpbg57rBEupe4obZ.QYsjJGIk1J53er/C.4QILOjW', 1);
+
+INSERT INTO authorities (username, authority) VALUES ('user', 'ROLE_USER');
+INSERT INTO authorities (username, authority) VALUES ('admin', 'ROLE_ADMIN');
+
 INSERT INTO joueur (id, nom, prenom, numero) VALUES (1, 'Doe', 'John', 1);
 INSERT INTO joueur (id, nom, prenom, numero) VALUES (2, 'Doe', 'Jane', 2);
 INSERT INTO joueur (id, nom, prenom, numero) VALUES (3, 'Doe', 'Jack', 3);
