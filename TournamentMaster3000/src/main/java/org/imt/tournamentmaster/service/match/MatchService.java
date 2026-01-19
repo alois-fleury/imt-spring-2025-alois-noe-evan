@@ -30,4 +30,30 @@ public class MatchService {
         return StreamSupport.stream(matchRepository.findAll().spliterator(), false)
                 .toList();
     }
+
+    @Transactional
+    public Match create(Match match) {
+        return matchRepository.save(match);
+    }
+
+    @Transactional
+    public Optional<Match> updateStatus(long id, Match.Status newStatus) {
+        Optional<Match> matchOpt = matchRepository.findById(id);
+
+        if (matchOpt.isPresent()) {
+            Match match = matchOpt.get();
+            if (newStatus.ordinal() <= match.getStatus().ordinal()) {
+                throw new IllegalArgumentException("Changement de statut invalide");
+            }
+            match.setStatus(newStatus);
+            return Optional.of(matchRepository.save(match));
+        }
+
+        return Optional.empty();
+    }
+
+    @Transactional
+    public void delete(long id) {
+        matchRepository.deleteById(id);
+    }
 }

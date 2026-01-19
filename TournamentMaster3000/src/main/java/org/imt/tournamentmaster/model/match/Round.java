@@ -1,15 +1,13 @@
 package org.imt.tournamentmaster.model.match;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
 public class Round {
 
-    @JsonIgnore
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private long id;
 

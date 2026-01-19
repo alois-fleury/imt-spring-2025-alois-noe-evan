@@ -1,6 +1,5 @@
 package org.imt.tournamentmaster.model.equipe;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -9,7 +8,6 @@ import java.util.Objects;
 @Entity
 public class Joueur {
 
-    @JsonIgnore
     @Id
     private long id;
 
